@@ -1,10 +1,6 @@
 ﻿using FluentFTP;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Options;
-using NPoco.RowMappers;
 using SixLabors.ImageSharp.Web;
 using SixLabors.ImageSharp.Web.Resolvers;
-using System.Runtime;
 
 namespace MyFilesystem.FTPFilesystem
 {

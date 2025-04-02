@@ -3,10 +3,7 @@ using Microsoft.Extensions.Options;
 using SixLabors.ImageSharp.Web;
 using SixLabors.ImageSharp.Web.Caching;
 using SixLabors.ImageSharp.Web.Resolvers;
-using System.IO;
-using System.Runtime;
 using System.Text.Json;
-using Umbraco.Cms.Core.Cache;
 
 namespace MyFilesystem.FTPFilesystem
 {

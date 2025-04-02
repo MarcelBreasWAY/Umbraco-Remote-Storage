@@ -3,7 +3,6 @@ using Microsoft.Extensions.Options;
 using SixLabors.ImageSharp.Web;
 using SixLabors.ImageSharp.Web.Providers;
 using SixLabors.ImageSharp.Web.Resolvers;
-using System.Configuration;
 
 namespace MyFilesystem.FTPFilesystem
 {
