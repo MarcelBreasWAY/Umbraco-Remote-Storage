@@ -22,6 +22,7 @@ app.UseUmbraco()
     {
         u.UseBackOffice();
         u.UseWebsite();
+        u.UseFtpFileSystem();
     })
     .WithEndpoints(u =>
     {

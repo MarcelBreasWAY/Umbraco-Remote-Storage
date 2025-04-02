@@ -2,7 +2,8 @@
 
 namespace MyFilesystem.FTPFilesystem
 {
-    public interface IFTPFilesystem : IFileSystem {
+    public interface IFTPFilesystem : IFileSystem
+    {
         string GetContentType(string path);
     }
 }

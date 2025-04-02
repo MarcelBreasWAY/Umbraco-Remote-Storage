@@ -1,12 +1,8 @@
-﻿using FluentFTP.Rules;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using SixLabors.ImageSharp.Web.Caching;
 using SixLabors.ImageSharp.Web.DependencyInjection;
-using SixLabors.ImageSharp.Web.Providers;
 using Umbraco.Cms.Infrastructure.DependencyInjection;
 using Umbraco.Cms.Web.Common.ApplicationBuilder;
-using Umbraco.Extensions;
 
 namespace MyFilesystem.FTPFilesystem
 {
@@ -18,6 +14,7 @@ namespace MyFilesystem.FTPFilesystem
                 .AddOptions<FTPSettings>()
                 .BindConfiguration($"FTPSettings");
 
+            builder.Services.TryAddSingleton<FTPFilesystemMiddleware>();
             builder.Services.TryAddSingleton<IFTPFilesystem, FTPFilesystem>();
             builder.Services.AddUnique<IImageCache, FTPImageCache>();
             builder.Services.AddImageSharp().ClearProviders().AddProvider<FTPImageProvider>().SetCache<FTPImageCache>();
@@ -25,6 +22,24 @@ namespace MyFilesystem.FTPFilesystem
             builder.SetMediaFileSystem(provider => provider.GetRequiredService<IFTPFilesystem>());
 
             return builder;
+        }
+
+        public static IUmbracoApplicationBuilderContext UseFtpFileSystem(this IUmbracoApplicationBuilderContext builder)
+        {
+            if (builder == null) throw new ArgumentNullException(nameof(builder));
+
+            UseFtpFileSystem(builder.AppBuilder);
+
+            return builder;
+        }
+
+        public static IApplicationBuilder UseFtpFileSystem(this IApplicationBuilder app)
+        {
+            if (app == null) throw new ArgumentNullException(nameof(app));
+
+            app.UseMiddleware<FTPFilesystemMiddleware>();
+
+            return app;
         }
     }
 }

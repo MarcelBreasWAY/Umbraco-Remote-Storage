@@ -9,6 +9,8 @@ namespace MyFilesystem.FTPFilesystem
 {
     public class FTPImageProvider(IOptions<FTPSettings> settings, FormatUtilities formatUtilities) : IImageProvider
     {
+        private readonly string _relativeUrlPrefix = "/media";
+
         public ProcessingBehavior ProcessingBehavior => ProcessingBehavior.CommandOnly;
         public Func<HttpContext, bool> Match { get; set; } = _ => true;
 
@@ -25,7 +27,7 @@ namespace MyFilesystem.FTPFilesystem
         public bool IsValidRequest(HttpContext context)
         {
             if (context == null) throw new ArgumentNullException(nameof(context));
-            return context.Request.Path.StartsWithSegments("/Media", StringComparison.InvariantCultureIgnoreCase)
+            return context.Request.Path.StartsWithSegments(_relativeUrlPrefix, StringComparison.InvariantCultureIgnoreCase)
                    && _formatUtilities.TryGetExtensionFromUri(context.Request.GetDisplayUrl(), out _);
         }
     }
