@@ -1,7 +1,7 @@
 # Umbraco-Remote-Storage
 Remote Storage example for Umbraco
 
-Setup a local FTP with the following Docker Compose file:
+For the example to work please setup a local FTP with the following Docker Compose file:
 ```yaml
 services:
   ftp:
