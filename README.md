@@ -1,3 +1,5 @@
+![Static Badge](https://img.shields.io/badge/Umbraco-214BAF?logo=Umbraco&labelColor=214BAF&color=000000)
+![Static Badge](https://img.shields.io/badge/.Net-512BD4?logo=dotnet&labelColor=512BD4&color=000000)
 # Umbraco-Remote-Storage
 Remote Storage example for Umbraco
 
